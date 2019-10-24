@@ -13,12 +13,14 @@ namespace JobsityFinancialChat.Providers
         private readonly ApplicationDbContext _context;
         private readonly UserServiceProvider _userServiceProvider;
         private readonly ChatroomServiceProvider _chatroomServiceProvider;
+        private readonly MessageServiceProvider _messageServiceProvider;
 
         public DatabaseProvider(ApplicationDbContext context)
         {
             _context = context;
             _userServiceProvider = new UserServiceProvider(context);
             _chatroomServiceProvider = new ChatroomServiceProvider(context);
+            _messageServiceProvider = new MessageServiceProvider(context);
         }
 
         #region User
@@ -34,6 +36,20 @@ namespace JobsityFinancialChat.Providers
 
         #endregion User
 
+        #region Message
+        public async Task<Message> SaveMessage(Message message)
+        {
+            return await _messageServiceProvider.SaveMessage(message);
+        }
+
+        public async Task<IEnumerable<Message>> GetMessages(Guid chatroomId)
+        {
+            return await _messageServiceProvider.GetMessages(chatroomId);
+        }
+       
+
+        #endregion Message
+
         #region Chatroom
 
         public async Task<Chatroom> CreateChatroom(Guid userId, string name)
@@ -45,7 +61,7 @@ namespace JobsityFinancialChat.Providers
         {
             return await _chatroomServiceProvider.Join(user, chatroomId);
         }
-       
+
         public async Task<List<Chatroom>> GetChatrooms()
         {
             return await _chatroomServiceProvider.GetAll();

@@ -58,5 +58,16 @@ namespace JobsityFinancialChat.API.Controllers
 
             return Ok(chatroom);
         }
+
+        // GET api/chatroom
+        [HttpGet]
+        [Route("{id}/messages")]
+        public async Task<IActionResult> Get(Guid id)
+        {
+            var messages = await _databaseProvider.GetMessages(id);
+
+            return Ok(messages);
+        }
+
     }
 }

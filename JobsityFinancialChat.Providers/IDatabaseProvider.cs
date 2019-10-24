@@ -8,8 +8,8 @@ namespace JobsityFinancialChat.Providers
     public interface IDatabaseProvider
     {
         #region User
-        Task<ApplicationUser> GetUser(string email);
 
+        Task<ApplicationUser> GetUser(string email);
 
         #endregion User
 
@@ -23,6 +23,13 @@ namespace JobsityFinancialChat.Providers
 
         #endregion Chatroom
 
+        #region Messages
+
+        Task<IEnumerable<Message>> GetMessages(Guid chatroomId);
+
+        Task<Message> SaveMessage(Message message);
+
+        #endregion Messages
 
         #region General
 
