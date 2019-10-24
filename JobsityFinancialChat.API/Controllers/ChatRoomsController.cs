@@ -33,8 +33,6 @@ namespace JobsityFinancialChat.API.Controllers
         {
             var chatrooms = await _databaseProvider.GetChatrooms();
 
-            //var response = (new StockService()).GetStock("aapl.us");
-
             return Ok(_mapper.Map<IEnumerable<ChatroomModel>>(chatrooms));
         }
 

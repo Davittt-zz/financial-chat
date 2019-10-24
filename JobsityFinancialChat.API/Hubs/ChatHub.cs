@@ -15,8 +15,7 @@ namespace JobsityFinancialChat.API.Hubs
         protected readonly UserManager<ApplicationUser> _userManager;
         private readonly IDatabaseProvider _databaseProvider;
 
-        public ChatHub(UserManager<ApplicationUser> userManager,
-            IDatabaseProvider databaseProvider)
+        public ChatHub(UserManager<ApplicationUser> userManager, IDatabaseProvider databaseProvider)
         {
             _userManager = userManager;
             _databaseProvider = databaseProvider;
@@ -30,23 +29,32 @@ namespace JobsityFinancialChat.API.Hubs
         /// <returns></returns>
         public async Task Send(MessageModel message)
         {
+            Message newMessage = new Message
+            {
+                ChatroomId = message.ChatroomId, 
+                Text = message.Message, 
+                SenderUserId = message.UserId, 
+                ReadDate = DateTime.Now,
+                SendDate = DateTime.Now
+            };
+
+            var sender = await _databaseProvider.SaveMessage(newMessage);
+
+            await _databaseProvider.Save();
+
             var senderEmail = Context.User.Identity.Name;
 
-            var sender = await _databaseProvider.GetUser(senderEmail);               
+            await Clients.Group(message.ChatroomId.ToString()).SendAsync("Send", message);          
+        } 
+
+        public Task JoinRoom(string chatroomId)
+        {
+            return Groups.AddToGroupAsync(Context.ConnectionId, chatroomId);
         }
 
-        public override async Task OnConnectedAsync()
+        public Task LeaveRoom(string chatroomId)
         {
-            var name = Context.User.Identity.Name;
-            if (string.IsNullOrEmpty(name))
-            {
-                await base.OnConnectedAsync();
-            }
-            else
-            {
-                await Groups.AddToGroupAsync(Context.ConnectionId, name);
-                await base.OnConnectedAsync();
-            }
+            return Groups.RemoveFromGroupAsync(Context.ConnectionId, chatroomId);
         }
     }
 }

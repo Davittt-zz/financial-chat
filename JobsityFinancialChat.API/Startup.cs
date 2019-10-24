@@ -57,6 +57,8 @@ namespace JobsityFinancialChat.API
            
             services.AddScoped<ITokenService, TokenService>();
 
+            //services.AddScoped<IChatHub, ChatHub>();
+
             services.AddIdentity<ApplicationUser, AppRole>(config =>
             {
                 config.SignIn.RequireConfirmedEmail = false;
