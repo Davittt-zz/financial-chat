@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
 
-namespace JobsityFinancialChat.Providers.Repositories.Properties
+namespace JobsityFinancialChat.Providers.Repositories.User
 {
     internal class UserServiceProvider : Repository<ApplicationUser>
     {
@@ -23,6 +23,5 @@ namespace JobsityFinancialChat.Providers.Repositories.Properties
             return await _context.Users
                 .FirstAsync(x => x.Email == email);
         }
-
     }
 }

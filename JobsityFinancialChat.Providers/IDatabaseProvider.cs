@@ -1,4 +1,6 @@
 ﻿using JobsityFinancialChat.Domain.Models.DB;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace JobsityFinancialChat.Providers
@@ -10,6 +12,16 @@ namespace JobsityFinancialChat.Providers
 
 
         #endregion User
+
+        #region Chatroom
+
+        Task<Chatroom> CreateChatroom(Guid userId, string name);
+
+        Task<Chatroom> Join(ApplicationUser user, Guid chatroomId);
+
+        Task<List<Chatroom>> GetChatrooms();
+
+        #endregion Chatroom
 
 
         #region General

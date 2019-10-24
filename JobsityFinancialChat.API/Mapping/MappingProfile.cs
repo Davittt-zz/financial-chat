@@ -1,11 +1,8 @@
 ﻿using AutoMapper;
 using JobsityFinancialChat.Domain.API.User;
+using JobsityFinancialChat.Domain.Models.API.Chatroom;
 using JobsityFinancialChat.Domain.Models.DB;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace JobsityFinancialChat.API.Mapping
 {
@@ -20,6 +17,12 @@ namespace JobsityFinancialChat.API.Mapping
                .ForMember(x => x.UserName, y => y.MapFrom(z => z.Email))
                .ForMember(x => x.Active, y => y.MapFrom(z => true))
                .ForMember(x => x.PasswordHash, y => y.MapFrom(z => z.Password));
+
+            CreateMap<ApplicationUser, ChatroomMemberModel>()
+                 .ForMember(x => x.Email, y => y.MapFrom(z => z.Email));
+
+            CreateMap<Chatroom, ChatroomModel>()
+                 .ForMember(x => x.Members, y => y.MapFrom(z => z.Members));
         }
     }
 }
