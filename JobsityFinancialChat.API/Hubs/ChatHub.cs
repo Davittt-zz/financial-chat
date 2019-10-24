@@ -1,10 +1,13 @@
 ﻿using JobsityFinancialChat.API.HubModels;
+using JobsityFinancialChat.Domain.Models.API;
 using JobsityFinancialChat.Domain.Models.DB;
+using JobsityFinancialChat.Logic;
 using JobsityFinancialChat.Providers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SignalR;
 using System;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace JobsityFinancialChat.API.Hubs
@@ -29,23 +32,50 @@ namespace JobsityFinancialChat.API.Hubs
         /// <returns></returns>
         public async Task Send(MessageModel message)
         {
-            Message newMessage = new Message
+            var text = message.Message.ToLower();
+            message.SendDate = DateTime.Now;
+
+            if (text.Contains("/stock="))
             {
-                ChatroomId = message.ChatroomId, 
-                Text = message.Message, 
-                SenderUserId = message.UserId, 
-                ReadDate = DateTime.Now,
-                SendDate = DateTime.Now
-            };
+                StringBuilder command = new StringBuilder(text);
 
-            var sender = await _databaseProvider.SaveMessage(newMessage);
+                command = command.Replace("/stock=", "");
 
-            await _databaseProvider.Save();
+                var response = await StockService.GetStock(command.ToString());
 
-            var senderEmail = Context.User.Identity.Name;
+                if (response != null)
+                {
+                    message.Message = response.Symbol.ToUpper() + " quote is $" + response.Open + " per share.";
+                    message.MessageType = (int)MessageTypeEnum.Command;
 
-            await Clients.Group(message.ChatroomId.ToString()).SendAsync("Send", message);          
-        } 
+                    await Clients.Group(message.ChatroomId.ToString()).SendAsync("Send", message);
+                }
+                else
+                {
+                    message.Message = command.ToString() + " could not be retrieved.";
+                    message.MessageType = (int)MessageTypeEnum.Error;
+
+                    await Clients.Group(message.ChatroomId.ToString()).SendAsync("OnMetadataMessage", message);
+                }
+            }
+            else
+            {
+                Message newMessage = new Message
+                {
+                    ChatroomId = message.ChatroomId,
+                    Text = message.Message,
+                    SenderUserId = message.UserId,
+                    ReadDate = DateTime.Now,
+                    SendDate = DateTime.Now
+                };
+
+                var sender = await _databaseProvider.SaveMessage(newMessage);
+
+                await _databaseProvider.Save();
+
+                await Clients.Group(message.ChatroomId.ToString()).SendAsync("Send", message);
+            }
+        }
 
         public Task JoinRoom(string chatroomId)
         {
