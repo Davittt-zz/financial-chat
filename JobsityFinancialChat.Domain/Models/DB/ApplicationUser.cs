@@ -18,7 +18,7 @@ namespace JobsityFinancialChat.Domain.Models.DB
 
         public bool Active { get; set; }
 
-        public virtual ICollection<ChatRoom> Chatrooms { get; set; }
+        public virtual IEnumerable<ApplicationUserChatroom> Chatrooms { get; set; }
 
         public ApplicationUser()
         {

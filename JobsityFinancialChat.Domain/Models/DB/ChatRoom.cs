@@ -1,7 +1,14 @@
-﻿namespace JobsityFinancialChat.Domain.Models.DB
+﻿using System;
+using System.Collections.Generic;
+
+namespace JobsityFinancialChat.Domain.Models.DB
 {
     public class ChatRoom
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
+
+        public string Name { get; set; }
+
+        public IEnumerable<ApplicationUserChatroom> Members { get; set; }
     }
 }

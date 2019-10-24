@@ -3,15 +3,17 @@ using System;
 using JobsityFinancialChat.Domain.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace JobsityFinancialChat.Domain.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191024135118_RemoveOldChatroomTable")]
+    partial class RemoveOldChatroomTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -100,55 +102,6 @@ namespace JobsityFinancialChat.Domain.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("JobsityFinancialChat.Domain.Models.DB.ApplicationUserChatroom", b =>
-                {
-                    b.Property<Guid>("ApplicationUserId");
-
-                    b.Property<Guid>("ChatRoomId");
-
-                    b.HasKey("ApplicationUserId", "ChatRoomId");
-
-                    b.HasIndex("ChatRoomId");
-
-                    b.ToTable("ApplicationUserChatroom");
-                });
-
-            modelBuilder.Entity("JobsityFinancialChat.Domain.Models.DB.ChatRoom", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ChatRooms");
-                });
-
-            modelBuilder.Entity("JobsityFinancialChat.Domain.Models.DB.Message", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<Guid>("ChatroomId");
-
-                    b.Property<DateTime?>("ReadDate");
-
-                    b.Property<DateTime>("SendDate");
-
-                    b.Property<Guid>("SenderUserId");
-
-                    b.Property<string>("Text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ChatroomId");
-
-                    b.HasIndex("SenderUserId");
-
-                    b.ToTable("Messages");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
                     b.Property<int>("Id")
@@ -228,32 +181,6 @@ namespace JobsityFinancialChat.Domain.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("JobsityFinancialChat.Domain.Models.DB.ApplicationUserChatroom", b =>
-                {
-                    b.HasOne("JobsityFinancialChat.Domain.Models.DB.ApplicationUser", "ApplicationUser")
-                        .WithMany("Chatrooms")
-                        .HasForeignKey("ApplicationUserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("JobsityFinancialChat.Domain.Models.DB.ChatRoom", "ChatRoom")
-                        .WithMany("Members")
-                        .HasForeignKey("ChatRoomId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("JobsityFinancialChat.Domain.Models.DB.Message", b =>
-                {
-                    b.HasOne("JobsityFinancialChat.Domain.Models.DB.ChatRoom", "Chatroom")
-                        .WithMany()
-                        .HasForeignKey("ChatroomId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("JobsityFinancialChat.Domain.Models.DB.ApplicationUser", "SenderUser")
-                        .WithMany()
-                        .HasForeignKey("SenderUserId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
