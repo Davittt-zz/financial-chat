@@ -10,7 +10,7 @@ namespace JobsityFinancialChat.Logic
 {
     public class StockService
     {
-        public async Task<StockInfo> GetStock(string stockName)
+        public static async Task<StockInfo> GetStock(string stockName)
         {
             HttpClient client = new HttpClient();
 
