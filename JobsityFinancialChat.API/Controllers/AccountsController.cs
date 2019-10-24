@@ -1,20 +1,14 @@
 ﻿using AutoMapper;
+using JobsityFinancialChat.Domain.API.User;
+using JobsityFinancialChat.Domain.Models.DB;
+using JobsityFinancialChat.Logic.Interfaces;
+using JobsityFinancialChat.Providers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using JobsityFinancialChat.API.Helpers;
-using JobsityFinancialChat.Domain.API.User;
-using JobsityFinancialChat.Domain.Models;
-using JobsityFinancialChat.Logic;
-using JobsityFinancialChat.Logic.Interfaces;
-using JobsityFinancialChat.Providers;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using JobsityFinancialChat.Domain.Models.DB;
 
 namespace JobsityFinancialChat.API.Controllers
 {
