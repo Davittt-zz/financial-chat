@@ -18,20 +18,20 @@ namespace JobsityFinancialChat.Domain.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<ApplicationUserChatroom>()
-            .HasKey(bc => new { bc.ApplicationUserId, bc.ChatRoomId });
+            .HasKey(bc => new { bc.ApplicationUserId, bc.ChatroomId });
             builder.Entity<ApplicationUserChatroom>()
                 .HasOne(bc => bc.ApplicationUser)
                 .WithMany(b => b.Chatrooms)
                 .HasForeignKey(bc => bc.ApplicationUserId);
             builder.Entity<ApplicationUserChatroom>()
-                .HasOne(bc => bc.ChatRoom)
+                .HasOne(bc => bc.Chatroom)
                 .WithMany(c => c.Members)
-                .HasForeignKey(bc => bc.ChatRoomId);
+                .HasForeignKey(bc => bc.ChatroomId);
 
             base.OnModelCreating(builder);
         }
 
-        public DbSet<ChatRoom> ChatRooms { get; set; }
+        public DbSet<Chatroom> Chatrooms { get; set; }
 
         public DbSet<Message> Messages { get; set; }
 

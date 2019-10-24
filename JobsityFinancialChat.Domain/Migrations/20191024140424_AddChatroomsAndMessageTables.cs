@@ -9,7 +9,7 @@ namespace JobsityFinancialChat.Domain.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "ChatRooms",
+                name: "Chatrooms",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -17,7 +17,7 @@ namespace JobsityFinancialChat.Domain.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ChatRooms", x => x.Id);
+                    table.PrimaryKey("PK_Chatrooms", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -25,11 +25,11 @@ namespace JobsityFinancialChat.Domain.Migrations
                 columns: table => new
                 {
                     ApplicationUserId = table.Column<Guid>(nullable: false),
-                    ChatRoomId = table.Column<Guid>(nullable: false)
+                    ChatroomId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ApplicationUserChatroom", x => new { x.ApplicationUserId, x.ChatRoomId });
+                    table.PrimaryKey("PK_ApplicationUserChatroom", x => new { x.ApplicationUserId, x.ChatroomId });
                     table.ForeignKey(
                         name: "FK_ApplicationUserChatroom_AspNetUsers_ApplicationUserId",
                         column: x => x.ApplicationUserId,
@@ -37,9 +37,9 @@ namespace JobsityFinancialChat.Domain.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ApplicationUserChatroom_ChatRooms_ChatRoomId",
-                        column: x => x.ChatRoomId,
-                        principalTable: "ChatRooms",
+                        name: "FK_ApplicationUserChatroom_Chatrooms_ChatroomId",
+                        column: x => x.ChatroomId,
+                        principalTable: "Chatrooms",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -60,9 +60,9 @@ namespace JobsityFinancialChat.Domain.Migrations
                 {
                     table.PrimaryKey("PK_Messages", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Messages_ChatRooms_ChatroomId",
+                        name: "FK_Messages_Chatrooms_ChatroomId",
                         column: x => x.ChatroomId,
-                        principalTable: "ChatRooms",
+                        principalTable: "Chatrooms",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -74,9 +74,9 @@ namespace JobsityFinancialChat.Domain.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ApplicationUserChatroom_ChatRoomId",
+                name: "IX_ApplicationUserChatroom_ChatroomId",
                 table: "ApplicationUserChatroom",
-                column: "ChatRoomId");
+                column: "ChatroomId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Messages_ChatroomId",
@@ -98,7 +98,7 @@ namespace JobsityFinancialChat.Domain.Migrations
                 name: "Messages");
 
             migrationBuilder.DropTable(
-                name: "ChatRooms");
+                name: "Chatrooms");
         }
     }
 }

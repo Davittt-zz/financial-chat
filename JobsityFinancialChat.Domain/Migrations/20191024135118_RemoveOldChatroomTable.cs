@@ -9,13 +9,13 @@ namespace JobsityFinancialChat.Domain.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ChatRooms");
+                name: "Chatrooms");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "ChatRooms",
+                name: "Chatrooms",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -24,9 +24,9 @@ namespace JobsityFinancialChat.Domain.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ChatRooms", x => x.Id);
+                    table.PrimaryKey("PK_Chatrooms", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ChatRooms_AspNetUsers_ApplicationUserId",
+                        name: "FK_Chatrooms_AspNetUsers_ApplicationUserId",
                         column: x => x.ApplicationUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -34,8 +34,8 @@ namespace JobsityFinancialChat.Domain.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ChatRooms_ApplicationUserId",
-                table: "ChatRooms",
+                name: "IX_Chatrooms_ApplicationUserId",
+                table: "Chatrooms",
                 column: "ApplicationUserId");
         }
     }

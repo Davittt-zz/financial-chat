@@ -8,7 +8,7 @@ namespace JobsityFinancialChat.Domain.Models.DB
     {
         public Guid ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
-        public Guid ChatRoomId { get; set; }
-        public ChatRoom ChatRoom { get; set; }
+        public Guid ChatroomId { get; set; }
+        public Chatroom Chatroom { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace JobsityFinancialChat.Domain.Models.DB
 
         public virtual ApplicationUser SenderUser { get; set; }
 
-        public virtual ChatRoom Chatroom { get; set; }
+        public virtual Chatroom Chatroom { get; set; }
 
     }
 }

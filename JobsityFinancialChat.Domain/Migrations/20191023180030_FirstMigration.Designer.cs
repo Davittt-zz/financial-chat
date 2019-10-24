@@ -21,7 +21,7 @@ namespace JobsityFinancialChat.Domain.Migrations
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            modelBuilder.Entity("JobsityFinancialChat.Domain.Models.API.ChatRoom", b =>
+            modelBuilder.Entity("JobsityFinancialChat.Domain.Models.API.Chatroom", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -32,7 +32,7 @@ namespace JobsityFinancialChat.Domain.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.ToTable("ChatRoom");
+                    b.ToTable("Chatroom");
                 });
 
             modelBuilder.Entity("JobsityFinancialChat.Domain.Models.DB.AppRole", b =>
@@ -197,7 +197,7 @@ namespace JobsityFinancialChat.Domain.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("JobsityFinancialChat.Domain.Models.API.ChatRoom", b =>
+            modelBuilder.Entity("JobsityFinancialChat.Domain.Models.API.Chatroom", b =>
                 {
                     b.HasOne("JobsityFinancialChat.Domain.Models.DB.ApplicationUser")
                         .WithMany("Chatrooms")

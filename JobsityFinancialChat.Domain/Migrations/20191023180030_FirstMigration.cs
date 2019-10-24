@@ -158,7 +158,7 @@ namespace JobsityFinancialChat.Domain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ChatRoom",
+                name: "Chatroom",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -167,9 +167,9 @@ namespace JobsityFinancialChat.Domain.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ChatRoom", x => x.Id);
+                    table.PrimaryKey("PK_Chatroom", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ChatRoom_AspNetUsers_ApplicationUserId",
+                        name: "FK_Chatroom_AspNetUsers_ApplicationUserId",
                         column: x => x.ApplicationUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -214,8 +214,8 @@ namespace JobsityFinancialChat.Domain.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_ChatRoom_ApplicationUserId",
-                table: "ChatRoom",
+                name: "IX_Chatroom_ApplicationUserId",
+                table: "Chatroom",
                 column: "ApplicationUserId");
         }
 
@@ -237,7 +237,7 @@ namespace JobsityFinancialChat.Domain.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "ChatRoom");
+                name: "Chatroom");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

@@ -102,7 +102,7 @@ namespace JobsityFinancialChat.Domain.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("JobsityFinancialChat.Domain.Models.DB.ChatRoom", b =>
+            modelBuilder.Entity("JobsityFinancialChat.Domain.Models.DB.Chatroom", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -113,7 +113,7 @@ namespace JobsityFinancialChat.Domain.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.ToTable("ChatRooms");
+                    b.ToTable("Chatrooms");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -197,7 +197,7 @@ namespace JobsityFinancialChat.Domain.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("JobsityFinancialChat.Domain.Models.DB.ChatRoom", b =>
+            modelBuilder.Entity("JobsityFinancialChat.Domain.Models.DB.Chatroom", b =>
                 {
                     b.HasOne("JobsityFinancialChat.Domain.Models.DB.ApplicationUser")
                         .WithMany("Chatrooms")

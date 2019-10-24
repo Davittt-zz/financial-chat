@@ -104,16 +104,16 @@ namespace JobsityFinancialChat.Domain.Migrations
                 {
                     b.Property<Guid>("ApplicationUserId");
 
-                    b.Property<Guid>("ChatRoomId");
+                    b.Property<Guid>("ChatroomId");
 
-                    b.HasKey("ApplicationUserId", "ChatRoomId");
+                    b.HasKey("ApplicationUserId", "ChatroomId");
 
-                    b.HasIndex("ChatRoomId");
+                    b.HasIndex("ChatroomId");
 
                     b.ToTable("ApplicationUserChatroom");
                 });
 
-            modelBuilder.Entity("JobsityFinancialChat.Domain.Models.DB.ChatRoom", b =>
+            modelBuilder.Entity("JobsityFinancialChat.Domain.Models.DB.Chatroom", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -122,7 +122,7 @@ namespace JobsityFinancialChat.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ChatRooms");
+                    b.ToTable("Chatrooms");
                 });
 
             modelBuilder.Entity("JobsityFinancialChat.Domain.Models.DB.Message", b =>
@@ -237,15 +237,15 @@ namespace JobsityFinancialChat.Domain.Migrations
                         .HasForeignKey("ApplicationUserId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("JobsityFinancialChat.Domain.Models.DB.ChatRoom", "ChatRoom")
+                    b.HasOne("JobsityFinancialChat.Domain.Models.DB.Chatroom", "Chatroom")
                         .WithMany("Members")
-                        .HasForeignKey("ChatRoomId")
+                        .HasForeignKey("ChatroomId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("JobsityFinancialChat.Domain.Models.DB.Message", b =>
                 {
-                    b.HasOne("JobsityFinancialChat.Domain.Models.DB.ChatRoom", "Chatroom")
+                    b.HasOne("JobsityFinancialChat.Domain.Models.DB.Chatroom", "Chatroom")
                         .WithMany()
                         .HasForeignKey("ChatroomId")
                         .OnDelete(DeleteBehavior.Cascade);
