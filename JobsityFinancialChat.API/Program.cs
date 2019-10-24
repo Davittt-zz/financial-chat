@@ -29,11 +29,6 @@ namespace JobsityFinancialChat.API
         public static IWebHost InitWebHost(string[] args, IConfiguration configuration) =>
           WebHost.CreateDefaultBuilder(args)
                  .UseStartup<Startup>()
-                 //.UseKestrel(options =>
-                 //{
-                 //    options.Limits.MaxRequestBodySize = null;
-                 //    options.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(5);
-                 //})
                  .UseConfiguration(configuration)
                  .Build();
 
