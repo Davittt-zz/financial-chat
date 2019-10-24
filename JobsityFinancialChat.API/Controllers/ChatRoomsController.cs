@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using JobsityFinancialChat.Domain.Models.API.Chatroom;
 using JobsityFinancialChat.Domain.Models.DB;
-using JobsityFinancialChat.Logic;
 using JobsityFinancialChat.Providers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

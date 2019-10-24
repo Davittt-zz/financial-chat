@@ -6,7 +6,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-
 namespace JobsityFinancialChat.API
 {
     public static class Program
@@ -22,7 +21,6 @@ namespace JobsityFinancialChat.API
                 .AddCommandLine(args);
             Configuration = builder.Build();
             InitWebHost(args, Configuration)
-                //.MigrateDatabase()
                 .Run();
         }
 

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using JobsityFinancialChat.API.Filters;
 using JobsityFinancialChat.API.Helpers;
+using JobsityFinancialChat.API.Hubs;
 using JobsityFinancialChat.API.Mapping;
 using JobsityFinancialChat.Domain.Data;
 using JobsityFinancialChat.Domain.Models.DB;
@@ -139,7 +140,9 @@ namespace JobsityFinancialChat.API
             });
 
             services.Configure<Logic.Models.TokenOptions>(Configuration.GetSection("TokenOptions"));
-      
+
+            services.AddSignalR();
+
             services.AddMemoryCache();
         }
 
@@ -158,8 +161,15 @@ namespace JobsityFinancialChat.API
             }
 
             app.UseMiddleware(typeof(ErrorHandlingMiddleware));
+
             app.UseHttpsRedirection();
+
             app.UseAuthentication();
+
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<ChatHub>("/api/chat");
+            });
             app.UseMvc();
         }
     }
