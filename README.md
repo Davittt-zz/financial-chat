@@ -7,18 +7,18 @@ Chatroom API with stock quotes from an external API.
 - List Chatroom list.
 - Register User.
 - Login User.
-- Secure Chat that allows clients to send messages to server and the other way round.
-- Decoupled bot that will call an API using the stock_code as a parameter.             
+- Secure Chat that allows clients to send messages to the server and the other way round.
+- A decoupled bot that will call an API using the stock_code as a parameter.             
 - Frontend login form.
 - Frontend chatroom window. Ability to switch among chatrooms.
-- List last 50 messages from a particular chatroom.
+- List the last 50 messages from a particular chatroom.
 - Incremental database Migrations.
 - Error Handling Middleware.
 
 # Technologies
 
 - .Net Code App (2.2).
-- Postgresql database with Entitiy Framework.
+- Postgresql database with Entity Framework.
 - JWT Authentication and Authorization in ASP.NET Core Web API.
 - SignalR hub.
 - xUnit
@@ -26,15 +26,15 @@ Chatroom API with stock quotes from an external API.
 
 # Instructions
 
-1) Pull repository locally and run the API in Visual Studio or deploy all necesarry files in IIS.
+1) Pull repository locally and run the API in Visual Studio or deploy all necessary files in IIS.
 
-2) Configure connection string and Token opitons in AppSettings.{env}.json. 
+2) Configure connection string and Token options in AppSettings.{env}.json. 
  "DefaultConnection": "Host=localhost;Port=5432;Username=<user>;Password=<password>;Database=<database>;"
 
-3) Install Postgress where the db will be deployed. If the database will run in a local machine, run "cmd.exe" on ~/JobsityFinancialChat.Domain and run the folowing command "dotnet ef database update". 
-It will run all necesary migration files to create and put the database up-to-date. (note 1)
+3) Install Postgress where the DB will be deployed. If the database will run in a local machine, run "cmd.exe" on ~/JobsityFinancialChat.Domain and run the following command "dotnet ef database update". 
+It will run all necessary migration files to create and put the database up-to-date. (note 1)
 
-4) Once the WebApi is deployed, go to Frontend folder and run the UI. Click on "init.html" and enter your user credentials**. If the WebAPI is running in a local environment, a new user must be created with:
+4) Once the WebApi is deployed, go to the Frontend folder and run the UI. Click on "init.html" and enter your user credentials**. If the WebAPI is running in a local environment, a new user must be created with:
 
 ```POST /api/Accounts/register HTTP/1.1
 Host: localhost:57092
@@ -49,17 +49,17 @@ Postman-Token: af0dcf4c-91ce-4f10-822a-76a19282831d
 }     
 ```
 
-5) After the user is authenticated, the UI save the user token which is retrieved from the login endpoint. This process is automatic.
+5) After the user is authenticated, the UI saves the user token which is retrieved from the login endpoint. This process is automatic.
 
-6) The user will see a list of available chatrooms, where he/she can join in ``(note 3)` . After the user selects a chatroom, the API retrieves the last 50 messages sorted by created date.
+6) The user will see a list of available chatrooms, where he/she can join in (note 3). After the user selects a chatroom, the API retrieves the last 50 messages sorted by created date.
 
 7) The user can post messages as commands into the chatroom with the following format `/stock=stock_code`. The message will be a stock quote using the following format: “APPL.US quote is $93.42 per share.
 
-8) All users that belong the chatroom should see all the messages, but the command messages are not stored in the DB.
+8) All users that belong to the chatroom should see all the messages, but the command messages are not stored in the DB.
 
- (note 1) There's a remote server db which can be used. Please send an email to ddonari@gmail.com to get access.
+ (note 1) There's a remote server DB that can be used. Please send an email to ddonari@gmail.com to get access.
 
- (note 2) There are preexisting users in the remote database.Please send an email to ddonari@gmail.com to get access.
+ (note 2) There are preexisting users in the remote database. Please send an email to ddonari@gmail.com to get access.
 
  (note 3) The API provides an endpoint that can be used to create new chat rooms:
 
@@ -79,6 +79,6 @@ Connection: keep-alive
 cache-control: no-cache
 
 {
-	"Name": "chatroom name"
+    "Name": "chatroom name"
 }```
     
