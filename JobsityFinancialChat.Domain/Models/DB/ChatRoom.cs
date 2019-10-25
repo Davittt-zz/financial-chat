@@ -12,7 +12,9 @@ namespace JobsityFinancialChat.Domain.Models.DB
         public IEnumerable<ApplicationUserChatroom> Members { get; set; }
 
         public Chatroom() {
+
             Members = new List<ApplicationUserChatroom>();
+
         }
     }
 }
