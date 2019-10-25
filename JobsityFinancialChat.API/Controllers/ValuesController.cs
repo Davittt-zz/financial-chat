@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using JobsityFinancialChat.Logic;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -8,15 +6,9 @@ namespace JobsityFinancialChat.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class ValuesController : ControllerBase
     {
-        private readonly IMapper _mapper;
-
-        public ValuesController(IMapper mapper) {
-            _mapper = mapper;
-        }
-
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()

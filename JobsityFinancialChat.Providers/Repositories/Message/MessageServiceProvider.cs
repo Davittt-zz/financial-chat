@@ -26,7 +26,6 @@ namespace JobsityFinancialChat.Providers.Repositories.ChatRoom
             return await _context.Messages.Where(x => x.ChatroomId == chatroomId)
                 .OrderByDescending(x => x.SendDate)
                 .Take(50)
-                .OrderBy(x => x.SendDate)
                 .ToListAsync();
         }
     }
