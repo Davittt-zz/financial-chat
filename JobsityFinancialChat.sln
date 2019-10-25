@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobsityFinancialChat.API", "JobsityFinancialChat.API\JobsityFinancialChat.API.csproj", "{F40EF39F-E7CF-4BD1-BFCD-5EE694CD0677}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsityFinancialChat.Domain", "JobsityFinancialChat.Domain\JobsityFinancialChat.Domain.csproj", "{FE9DDECA-722B-45AF-89F2-E29143D1250C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobsityFinancialChat.Domain", "JobsityFinancialChat.Domain\JobsityFinancialChat.Domain.csproj", "{FE9DDECA-722B-45AF-89F2-E29143D1250C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsityFinancialChat.Providers", "JobsityFinancialChat.Providers\JobsityFinancialChat.Providers.csproj", "{D1714D1E-9318-4418-A489-59A85B3B5C74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobsityFinancialChat.Providers", "JobsityFinancialChat.Providers\JobsityFinancialChat.Providers.csproj", "{D1714D1E-9318-4418-A489-59A85B3B5C74}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobsityFinancialChat.Logic", "JobsityFinancialChat.Logic\JobsityFinancialChat.Logic.csproj", "{9F54610A-5401-48B0-BF6D-05BB65E74E29}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{A4063C17-199A-4DC7-A3E5-D3FB685C083C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
