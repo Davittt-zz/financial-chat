@@ -25,7 +25,7 @@ namespace JobsityFinancialChat.Providers
 
         #region Messages
 
-        Task<IEnumerable<Message>> GetMessages(Guid chatroomId);
+        Task<List<Message>> GetMessages(Guid chatroomId);
 
         Task<Message> SaveMessage(Message message);
 

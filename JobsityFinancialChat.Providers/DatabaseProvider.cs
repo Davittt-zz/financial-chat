@@ -42,7 +42,7 @@ namespace JobsityFinancialChat.Providers
             return await _messageServiceProvider.SaveMessage(message);
         }
 
-        public async Task<IEnumerable<Message>> GetMessages(Guid chatroomId)
+        public async Task<List<Message>> GetMessages(Guid chatroomId)
         {
             return await _messageServiceProvider.GetMessages(chatroomId);
         }

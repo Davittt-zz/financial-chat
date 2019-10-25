@@ -21,7 +21,7 @@ namespace JobsityFinancialChat.Providers.Repositories.ChatRoom
             return message;
         }
 
-        internal async Task<IEnumerable<Message>> GetMessages(Guid chatroomId)
+        internal async Task<List<Message>> GetMessages(Guid chatroomId)
         {
             return await _context.Messages.Where(x => x.ChatroomId == chatroomId)
                 .OrderByDescending(x => x.SendDate)

@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobsityFinancialChat.Logic"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{A4063C17-199A-4DC7-A3E5-D3FB685C083C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsityFinancialChat.Logic.Test", "JobsityFinancialChat.Logic.Test\JobsityFinancialChat.Logic.Test.csproj", "{E01E461E-AEA5-48F0-BD6D-029EA1428986}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsityFinancialChat.API.Test", "JobsityFinancialChat.API.Test\JobsityFinancialChat.API.Test.csproj", "{D675682A-3586-4F7A-BAFB-DE7D3EF5FD4F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +39,14 @@ Global
 		{9F54610A-5401-48B0-BF6D-05BB65E74E29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F54610A-5401-48B0-BF6D-05BB65E74E29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F54610A-5401-48B0-BF6D-05BB65E74E29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E01E461E-AEA5-48F0-BD6D-029EA1428986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E01E461E-AEA5-48F0-BD6D-029EA1428986}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E01E461E-AEA5-48F0-BD6D-029EA1428986}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E01E461E-AEA5-48F0-BD6D-029EA1428986}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D675682A-3586-4F7A-BAFB-DE7D3EF5FD4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D675682A-3586-4F7A-BAFB-DE7D3EF5FD4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D675682A-3586-4F7A-BAFB-DE7D3EF5FD4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D675682A-3586-4F7A-BAFB-DE7D3EF5FD4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
