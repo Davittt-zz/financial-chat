@@ -50,13 +50,13 @@ namespace JobsityFinancialChat.API.Controllers
         // POST api/chatroom
         [HttpPost]
         [Route("join")]
-        public async Task<IActionResult> Join([FromBody] Guid chatroomId)
+        public async Task<IActionResult> Join([FromBody] ChatroomModel chatroom)
         {
             var user = await _userManager.FindByEmailAsync(User.Identity.Name);
 
-            var chatroom = await _databaseProvider.Join(user, chatroomId);
+            var result = await _databaseProvider.Join(user, chatroom.Id);
 
-            return Ok(chatroom);
+            return Ok(result);
         }
 
         // GET api/chatroom

@@ -32,27 +32,27 @@ namespace JobsityFinancialChat.API.Hubs
         /// <returns></returns>
         public async Task Send(MessageModel message)
         {
-            var text = message.Message.ToLower();
+            var text = message.Text.ToLower();
             message.SendDate = DateTime.Now;
 
-            if (text.Contains("/stock="))
+            if (text.Contains("/stock_code="))
             {
                 StringBuilder command = new StringBuilder(text);
 
-                command = command.Replace("/stock=", "");
+                command = command.Replace("/stock_code=", "");
 
-                var response = await StockService.GetStock(command.ToString());
+                var response = await StockService.Instance.GetStock(command.ToString());
 
                 if (response != null)
                 {
-                    message.Message = response.Symbol.ToUpper() + " quote is $" + response.Open + " per share.";
+                    message.Text = response.Symbol.ToUpper() + " quote is $" + response.Open + " per share.";
                     message.MessageType = (int)MessageTypeEnum.Command;
 
                     await Clients.Group(message.ChatroomId.ToString()).SendAsync("Send", message);
                 }
                 else
                 {
-                    message.Message = command.ToString() + " could not be retrieved.";
+                    message.Text = command.ToString() + " could not be retrieved.";
                     message.MessageType = (int)MessageTypeEnum.Error;
 
                     await Clients.Group(message.ChatroomId.ToString()).SendAsync("OnMetadataMessage", message);
@@ -63,7 +63,7 @@ namespace JobsityFinancialChat.API.Hubs
                 Message newMessage = new Message
                 {
                     ChatroomId = message.ChatroomId,
-                    Text = message.Message,
+                    Text = message.Text,
                     SenderUserId = message.UserId,
                     ReadDate = DateTime.Now,
                     SendDate = DateTime.Now

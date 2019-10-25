@@ -8,9 +8,5 @@ namespace JobsityFinancialChat.Domain.API.User
         public string UserName { get; set; }
         [Required]
         public string Password { get; set; }
-
-        public string DeviceToken { get; set; }
-
-        public string OperatingSystem { get; set; }
     }
 }
