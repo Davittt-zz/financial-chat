@@ -150,5 +150,15 @@ namespace JobsityFinancialChat.API.Controllers
             return Ok("Password has been changed successfully");
         }
 
+        [HttpGet]
+        [Route("me")]
+        public async Task<IActionResult> Me()
+        {
+            var user = await _userManager.FindByEmailAsync(User.Identity.Name);
+
+            return Ok(user.Id);
+        }
+
+
     }
 }
