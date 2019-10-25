@@ -43,15 +43,19 @@ namespace JobsityFinancialChat.Providers.Repositories.ChatRoom
         {
             var userResult = await _context.Users.FindAsync(user.Id);
 
-            var chatroom = await _context.Chatrooms.FindAsync(chatroomId);
+            var chatroom = await _context.Chatrooms.Include(x=>x.Members).FirstOrDefaultAsync(x=>x.Id==chatroomId);
 
-            _context.AddRange(new ApplicationUserChatroom()
+            // Check if user wass added before in the chatroom
+            if (!chatroom.Members.Any(x => x.ApplicationUserId == user.Id))
             {
-                ApplicationUserId = userResult.Id,
-                ChatroomId = chatroom.Id
-            });
+                _context.AddRange(new ApplicationUserChatroom()
+                {
+                    ApplicationUserId = userResult.Id,
+                    ChatroomId = chatroom.Id
+                });
 
-            _context.SaveChanges();
+                _context.SaveChanges();
+            }
 
             chatroom.Members = null;
 
