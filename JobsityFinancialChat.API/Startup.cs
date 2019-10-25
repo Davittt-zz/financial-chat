@@ -35,8 +35,10 @@ namespace JobsityFinancialChat.API
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
+                                .SetBasePath(env.ContentRootPath)
                                 .AddJsonFile($"appSettings.{env.EnvironmentName}.json")
                                 .AddEnvironmentVariables();
+
             Configuration = builder.Build();
 
             ConnectionString = Configuration["ConnectionStrings:DefaultConnection"];
