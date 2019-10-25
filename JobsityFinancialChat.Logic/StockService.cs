@@ -10,7 +10,25 @@ namespace JobsityFinancialChat.Logic
 {
     public class StockService
     {
-        public static async Task<StockInfo> GetStock(string stockName)
+        private static StockService instance = null;
+
+        private StockService()
+        {
+        }
+
+        public static StockService Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new StockService();
+                }
+                return instance;
+            }
+        }
+
+        public async Task<StockInfo> GetStock(string stockName)
         {
             HttpClient client = new HttpClient();
 
@@ -20,7 +38,7 @@ namespace JobsityFinancialChat.Logic
             client.DefaultRequestHeaders.Add("User-Agent", ".NET Foundation Repository Reporter");
 
             var stringResult = await client
-                .GetStringAsync($"https://stooq.com/q/l/?s="+stockName+"&f=sd2t2ohlcv&h&e=JSON");
+                .GetStringAsync($"https://stooq.com/q/l/?s=" + stockName + "&f=sd2t2ohlcv&h&e=JSON");
 
             StookStockInfo result = JsonConvert.DeserializeObject<StookStockInfo>(stringResult);
 

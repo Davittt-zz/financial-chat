@@ -9,7 +9,7 @@ namespace JobsityFinancialChat.API.HubModels
         public Guid ChatroomId { get; set; }
         
         [Required]
-        public string Message { get; set; }
+        public string Text { get; set; }
 
         public  Guid UserId { get; set; }
 
