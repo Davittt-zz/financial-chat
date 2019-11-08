@@ -22,8 +22,7 @@ namespace JobsityFinancialChat.Providers.Repositories.ChatRoom
             });
 
             var chatroom = result.Entity;
-
-
+            
             _context.SaveChanges();
 
             await _context.AddAsync(new ApplicationUserChatroom
