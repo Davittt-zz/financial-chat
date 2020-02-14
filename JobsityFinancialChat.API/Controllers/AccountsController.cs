@@ -158,7 +158,6 @@ namespace JobsityFinancialChat.API.Controllers
 
             return Ok(user.Id);
         }
-
-
+        
     }
 }
